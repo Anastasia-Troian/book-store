@@ -1,0 +1,33 @@
+
+<button type="button" [routerLink]="['/category/add']"  class="btn btn-outline-dark ml-5 my-2">Add new category</button>
+<button type="button" [routerLink]="['/account/register']"  class="btn btn-outline-dark ml-5 my-2">Register</button>
+<button type="button" [routerLink]="['/account/login']"  class="btn btn-outline-dark ml-5 my-2">Login</button>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th>Delete</th>
+    <th>Update</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let category of categories ; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      {{ category.id }}
+    </td>
+    <td>
+      {{ category.name }}
+    </td>
+    <td>
+      <button type="button" (click)="onDelete(category.id)" class="btn btn-outline-dark">Delete</button>
+    </td>
+    <td>
+      <button type="button" [routerLink]="['/category/update', category.id]"  class="btn btn-outline-dark">Update</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
