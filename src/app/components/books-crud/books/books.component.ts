@@ -16,6 +16,8 @@ export class BooksComponent implements OnInit {
 
   books: Array<BookDto>;
   
+  category: string = "Fantasy"
+
   constructor( private booksService: BookService,
                 private spinner: NgxSpinnerService,
                 private notifier: NotifierService) {

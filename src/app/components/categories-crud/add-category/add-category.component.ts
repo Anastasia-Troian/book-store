@@ -13,7 +13,8 @@ export class AddCategoryComponent implements OnInit {
 
   newCategory: CategoryDto = {
     id: -1,
-    name: ''
+    name: '',
+    books: []
   }
 
   constructor(private categoryService: CategoryService, private router: Router) { }
@@ -27,7 +28,7 @@ export class AddCategoryComponent implements OnInit {
     this.categoryService.addCategory(this.newCategory).subscribe((res: ApiResponse) =>{
       if(res.isSuccessful){
         console.log(res.message)
-        this.router.navigate(['/']);
+        this.router.navigate(['/book']);
       }
     })
   }

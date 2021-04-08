@@ -25,4 +25,6 @@ getCategories(): Observable<ApiResponse>{
   updateCategory(category: CategoryDto): Observable<ApiResponse>{
     return this.http.post<ApiResponse>('https://localhost:44357/api/category/Update',category);
   } 
+  
+
 }

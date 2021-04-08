@@ -1,6 +1,18 @@
 <div class="mb-3">
   <label for="c" class="form-label">Name</label>
   <input [(ngModel)]="newBook.name"  type="text" class="form-control" id="c" >
+  <label for="c" class="form-label">Year</label>
+  <input [(ngModel)]="newBook.year" type="number" class="form-control" id="c">
+  <label for="c" class="form-label">Author</label>
+  <input [(ngModel)]="newBook.author" type="text" class="form-control" id="c">
+  <label for="c" class="form-label">Category</label>
+
+  <select [(ngModel)]="newBook.category" >
+    <option *ngFor="let category of categories">
+      {{category.name}}
+    </option>
+  </select>
+
 </div>
 <button type="button" (click)="onAdd()" class="btn btn-outline-dark ml-5 my-2">Add Book</button>
-<button type="button" [routerLink]="['/']"  class="btn btn-outline-dark ml-5 my-2">Back</button>
+<button type="button" [routerLink]="['/book']"  class="btn btn-outline-dark ml-5 my-2">Back</button>

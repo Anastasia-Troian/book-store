@@ -1,5 +1,7 @@
+import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiCollectionResponse, ApiResponse } from 'src/app/models/apiResponse';
 import { CategoryDto } from 'src/app/models/categoryDto';
 import { CategoryService } from 'src/app/services/category.service';
@@ -14,7 +16,8 @@ export class UpdateCategoryComponent implements OnInit {
   id: string;
   category: CategoryDto = {
     id: -1,
-    name: ''
+    name: '',
+    books: []
   }
   constructor(private categoryService: CategoryService, private route:ActivatedRoute, private router: Router) { }
 

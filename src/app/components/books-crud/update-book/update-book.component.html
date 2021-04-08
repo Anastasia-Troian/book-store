@@ -1,3 +1,18 @@
-<p>
-  update-book works!
-</p>
+<div class="mb-3">
+  <label for="c" class="form-label">Name</label>
+  <input [(ngModel)]="newBook.name" type="text" class="form-control" id="c">
+  <label for="c" class="form-label">Year</label>
+  <input [(ngModel)]="newBook.year" type="text" class="form-control" id="c">
+  <label for="c" class="form-label">Author</label>
+  <input [(ngModel)]="newBook.author" type="text" class="form-control" id="c">
+  <label for="c" class="form-label">Category</label>
+
+  <select [(ngModel)]="newBook.category" >
+    <option *ngFor="let category of categories">
+      {{category.name}}
+    </option>
+  </select>
+
+</div>
+<button type="button" (click)="onUpdate()" class="btn btn-outline-dark ml-5 my-2">Update category</button>
+<button type="button" [routerLink]="['/book']" class="btn btn-outline-dark ml-5 my-2">Back</button>

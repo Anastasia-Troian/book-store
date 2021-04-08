@@ -18,12 +18,16 @@ export class BookService {
       return this.http.delete<ApiResponse>('https://localhost:44357/api/book?id=' + id);
     }
   
-    addBook(category: BookDto): Observable<ApiResponse>{
-      return this.http.post<ApiResponse>('https://localhost:44357/api/book',category);
+    addBook(book: BookDto): Observable<ApiResponse>{
+      console.log(book)
+      return this.http.post<ApiResponse>('https://localhost:44357/api/book/Add',book);
     } 
   
-    updateBook(category: BookDto): Observable<ApiResponse>{
-      return this.http.post<ApiResponse>('https://localhost:44357/api/book/Update',category);
+    updateBook(book: BookDto): Observable<ApiResponse>{
+      return this.http.post<ApiResponse>('https://localhost:44357/api/book/Update',book);
     } 
 
+    getBookCategory(category: string): Observable<ApiResponse>{
+      return this.http.get<ApiCollectionResponse>("https://localhost:44357/api/book/BookCategory/"+category);
+    }
 }
