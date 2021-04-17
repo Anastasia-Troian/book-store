@@ -9,6 +9,7 @@
     <th scope="col">Name</th>
     <th>Delete</th>
     <th>Update</th>
+    <th>Show Books</th>
   </tr>
   </thead>
   <tbody>
@@ -25,6 +26,9 @@
     </td>
     <td>
       <button type="button" [routerLink]="['/category/update', category.id]"  class="btn btn-outline-dark">Update</button>
+    </td>
+    <td>
+      <button type="button" (click)="onShowBooks(category.name)" [routerLink]="['/book/category-books']"  class="btn btn-outline-dark">Show Books</button>
     </td>
   </tr>
   </tbody>

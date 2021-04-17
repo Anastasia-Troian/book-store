@@ -40,8 +40,14 @@ export class CategoriesComponent implements OnInit {
     })
   }
 
+  onShowBooks(category:string){
+    localStorage.setItem("category",category);
+    
+  }
+
   loadCategories()
   {
+    localStorage.clear();
     this.categoryService.getCategories().subscribe( (res: ApiCollectionResponse) => {
       if(res.isSuccessful){
         this.notifier.notify('success', 'OK')

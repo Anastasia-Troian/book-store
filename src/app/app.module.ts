@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import  { HttpClientModule } from "@angular/common/http"
+import  { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,8 @@ import { AddBookComponent } from './components/books-crud/add-book/add-book.comp
 import { UpdateBookComponent } from './components/books-crud/update-book/update-book.component';
 import { RegisterComponent } from './components/account/register/register.component';
 import { LoginComponent } from './components/account/login/login.component';
+import { TokenInterceptor } from './interceptor';
+import { BookCategoryComponent } from './components/books-crud/book-category/book-category.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: { horizontal: { position: 'right' }, vertical: { position: 'top' } }
@@ -36,6 +38,7 @@ const customNotifierOptions: NotifierOptions = {
     BooksComponent,
     AddBookComponent,
     UpdateBookComponent,
+    BookCategoryComponent
 
   ],
   imports: [
@@ -48,7 +51,9 @@ const customNotifierOptions: NotifierOptions = {
     BrowserAnimationsModule,
     NotifierModule.withConfig(customNotifierOptions)
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

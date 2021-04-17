@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiResponse } from 'src/app/models/apiResponse';
+import { ApiResponse, ResultLoginDto } from 'src/app/models/apiResponse';
 import { LoginDto } from 'src/app/models/loginDto';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -24,10 +24,11 @@ export class LoginComponent implements OnInit {
 
   onLogin()
   {
-    this.accountService.login(this.login).subscribe((res: ApiResponse) =>{
+    this.accountService.login(this.login).subscribe((res: ResultLoginDto) =>{
       if(res.isSuccessful){
         console.log(res.message)
-        this.router.navigate(['/']);
+        this.router.navigate(['/account']);
+        localStorage.setItem("token",res.token)
       }
     })
   }

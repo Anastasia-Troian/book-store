@@ -1,0 +1,43 @@
+
+<button type="button" [routerLink]="['/book/add']"  class="btn btn-outline-dark ml-5 my-2">Add new book</button>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Year</th>
+    <th scope="col">Author</th>
+    <th scope="col">Category</th>
+    <th>Delete</th>
+    <th>Update</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books ; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      {{ book.id }}
+    </td>
+    <td>
+      {{ book.name }}
+    </td>
+    <td>
+      {{ book.year }}
+    </td>
+    <td>
+      {{ book.author }}
+    </td>
+    <td>
+      {{ book.category }}
+    </td>
+    <td>
+      <button type="button" (click)="onDelete(book.id)" class="btn btn-outline-dark">Delete</button>
+    </td>
+    <td>
+      <button type="button" [routerLink]="['/book/update', book.id]"  class="btn btn-outline-dark">Update</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

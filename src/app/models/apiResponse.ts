@@ -6,3 +6,7 @@ export class ApiResponse{
 export class ApiCollectionResponse extends ApiResponse{
     data: Array<any>;
 }
+
+export class ResultLoginDto extends ApiResponse{
+         token: string ;
+    }

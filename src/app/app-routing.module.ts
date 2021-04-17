@@ -9,6 +9,8 @@ import { AddBookComponent } from './components/books-crud/add-book/add-book.comp
 import { UpdateBookComponent } from './components/books-crud/update-book/update-book.component';
 import { RegisterComponent } from './components/account/register/register.component';
 import { LoginComponent } from './components/account/login/login.component';
+import { AuthGuard } from 'src/guards/auth.guard';
+import { BookCategoryComponent } from './components/books-crud/book-category/book-category.component';
 
 const routes: Routes = [
   {path: '', component:CategoriesComponent},
@@ -23,7 +25,7 @@ const routes: Routes = [
   {
     path: 'account',
     children: [
-      {path: '', component:CategoriesComponent},
+      {path: '', component:CategoriesComponent, canActivate: [AuthGuard]},
       {path: 'register', component:RegisterComponent},
       {path: 'login', component:LoginComponent}
     ]
@@ -33,7 +35,8 @@ const routes: Routes = [
     children: [
       {path: '', component:BooksComponent},
       {path: 'add', component:AddBookComponent},
-      {path: 'update/:id', component:UpdateBookComponent}
+      {path: 'update/:id', component:UpdateBookComponent},
+      {path: 'category-books',component:BookCategoryComponent}
     ]
   },
 ];
